@@ -1,0 +1,30 @@
+{
+  "name": "bloggerapi-formative3",
+  "version": "1.0.0",
+  "description": "creating a blog post of most recent blog entries",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kshantilal/BloggerAPI.git"
+  },
+  "keywords": [
+    "blogger",
+    "api",
+    "google"
+  ],
+  "author": "Kunal Shantilal, Connie Magallon, Amy Soden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kshantilal/BloggerAPI/issues"
+  },
+  "homepage": "https://github.com/kshantilal/BloggerAPI",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "jquery": "^3.2.1"
+  }
+}
