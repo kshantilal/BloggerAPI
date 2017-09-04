@@ -22,7 +22,7 @@ function getId(){
 		dataType:"jsonp",
 		success:function(DataFromBlogger){
 			console.log(DataFromBlogger)
-
+			
 		},
 
 
