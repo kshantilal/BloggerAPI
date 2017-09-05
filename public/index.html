@@ -1,22 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Blogger API</title>
-	<meta charset="utf-8">
+	<title>Yoobee Blog</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
 </head>
-<body>
-	<h1>BloggerAPI Formative3</h1>
+<body class="main">
+	<button id="authorize-button" style="display: none;">Authorize</button>
+	<button id="signout-button" style="display: none;">Sign Out</button>
+
+	<div id="content"></div>
+	<div class="nav-bar">
+		<div class="logo">
+			<h1 class="logo-box">BLOG</h1>
+		</div>
+		<div class="menu">
+			<ul class="menu-list">
+				<li class="menu-list_btn">
+					<a href="">All Post</a>
+				</li>
+				<li class="menu-list_btn">
+					<a href="">Trending</a>
+				</li>
+				<li class="menu-list_btn">
+					<a href="">Coolest News</a>
+				</li>
+				<!-- <li class="menu-list_btn">
+					<a href="">My Post</a>
+				</li> -->
+			</ul>
+			<ul class="menu-login">
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="blog">
+		<div class="post-container">
+			<h2 class="post_title">Write a Post</h2 class="post_title">
+			<form id="SendTweet" method="post" action="/">
+				<!-- <div class="post_form"> -->
+					<!-- <textarea id="TwitterMessage" class="form-control"></textarea> -->
+				<!-- </div> -->
+				<!-- <button type="submit" class="btn">Send Tweet</button> -->
+			</form>
+			<!-- <span id="result"></span> -->
+		</div>
+	</div>
 
 
 
-
-
-
-
-
-
+	<script src="https://apis.google.com/js/api.js"></script>
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+
+
+
 </body>
 </html>
