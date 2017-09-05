@@ -50,7 +50,7 @@ function getId(){
 }
 
 getAccessToken();
-
+// http://localhost:3000/?code=4/JJXYEa-n_Foh_rBvRPGsuzabRkzcMjJCLUBQrgd9rz0#
 
 //Google authentication stuff
 var discoveryDocs = ["https://people.googleapis.com/$discovery/rest?version=v1"];
