@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Yoobee Blog</title>
+	<title>NON Yoobee Blog</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
 </head>
 <body class="main">
-	<button id="authorize-button" style="display: none;">Authorize</button>
-	<button id="signout-button" style="display: none;">Sign Out</button>
-
-	<div id="content"></div>
 	<div class="nav-bar">
 		<div class="logo">
-			<h1 class="logo-box">BLOG</h1>
+			<img class="logo_pic" src="img/logo.png">
+			<!-- <h1 class="logo-box">BLOG</h1> -->
 		</div>
 		<div class="menu">
 			<ul class="menu-list">
@@ -27,9 +23,6 @@
 				<li class="menu-list_btn">
 					<a href="">Coolest News</a>
 				</li>
-				<!-- <li class="menu-list_btn">
-					<a href="">My Post</a>
-				</li> -->
 			</ul>
 			<ul class="menu-login">
 				<li id="authorize-button">
@@ -41,28 +34,27 @@
 			</ul>
 		</div>
 	</div>
-
 	<div class="blog">
 		<div class="post-container">
 			<h2 class="post_title">Write a Post</h2 class="post_title">
 			<form id="SendTweet" method="post" action="/">
-				<!-- <div class="post_form"> -->
-					<!-- <textarea id="TwitterMessage" class="form-control"></textarea> -->
-				<!-- </div> -->
-				<!-- <button type="submit" class="btn">Send Tweet</button> -->
+				<div class="post_form">
+					<textarea id="post-message" class="form-control" placeholder="Write your post..."></textarea>
+				</div>
+				<div class="all-btn-post">
+					<button type="submit" class="btn-post">Post</button>
+					<span id="result">Helloooo</span>
+				</div>
 			</form>
-			<!-- <span id="result"></span> -->
+			
 		</div>
 	</div>
-
 
 
 
 	<script src="https://apis.google.com/js/api.js"></script>
 	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
-
-
 
 
 </body>
