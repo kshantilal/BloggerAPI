@@ -17,6 +17,8 @@ var rl = readline.createInterface({
 	output: process.stdout
 });
 
+var tokens;
+
 var oauth2Client = new OAuth2(
   config.ClientID,
   config.ClientSecret,
@@ -40,6 +42,9 @@ function getAccessToken (oauth2Client, callback) {
       // set tokens to the client
       // TODO: tokens should be set by OAuth2 client.
       oauth2Client.setCredentials(tokens);
+      console.log(tokens.access_token);
+      
+
       callback();
     });
   });
