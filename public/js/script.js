@@ -38,17 +38,13 @@ function getId(){
 		success:function(DataFromBlogger){
 			console.log(DataFromBlogger.items[0].content);
 
-			for (var i = 0; i < DataFromBlogger.length; i++) {
-				DataFromBlogger.items[i].content;
-				DataFromBlogger.items[i].title;
 
-				var blogTitle = DataFromBlogger.items[i].title;;
-				var blogContent = DataFromBlogger.items[i].content;
-			}
-
-
-
-			
+			for (var i = 0; i < DataFromBlogger.items.length; i++) {
+				$("#BlogContainer").append("<div class='blog-container_divs'>"+
+					"<div class='divs_pic'>"+DataFromBlogger.items[i].title+"</div>"+
+					"<div class='divs_text'>"+DataFromBlogger.items[i].content+"</div>"+
+				"</div>")
+			}	
 		},
 
 
