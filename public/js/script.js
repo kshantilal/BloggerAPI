@@ -36,7 +36,17 @@ function getId(){
 		url: "https://www.googleapis.com/blogger/v3/blogs/4002601360602175877/posts?key="+ApiKey, //need a apikey
 		dataType:"jsonp",
 		success:function(DataFromBlogger){
-			console.log(DataFromBlogger)
+			console.log(DataFromBlogger.items[0].content);
+
+			for (var i = 0; i < DataFromBlogger.length; i++) {
+				DataFromBlogger.items[i].content;
+				DataFromBlogger.items[i].title;
+
+				var blogTitle = DataFromBlogger.items[i].title;;
+				var blogContent = DataFromBlogger.items[i].content;
+			}
+
+
 
 			
 		},
@@ -48,5 +58,42 @@ function getId(){
 	});
 
 }
+
+
+$("#SendTweet").submit(function(event){
+	event.preventDefault();
+
+	var message = $("#post-message").val();
+	var url = "http://localhost:3000";
+	console.log(message);
+
+	if (message.length == 0) {
+		alert("Please fill out your message");
+		return;
+	}else if(message.length > 200){
+		alert("Must be less than 200 characters");
+		return;
+
+	}else{
+		url += "/bloggerMessage=" + message;
+
+	}
+
+	$.ajax({
+		url: url,
+		dataType: "json",
+		type: "post",
+		success: function(dataPost){
+			console.log(dataPost);
+			
+		},
+		error: function(){
+			console.log("error");
+			
+		}
+
+	});
+
+});
 
 getAccessToken();

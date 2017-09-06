@@ -21,47 +21,53 @@ var tokens;
 var authCode;
 
 var oauth2Client = new OAuth2(
-  config.ClientID,
-  config.ClientSecret,
-  "http://localhost:3000"
+	config.ClientID,
+	config.ClientSecret,
+	"http://localhost:3000"
 );
 
 function getAccessToken (oauth2Client, callback) {
-  // generate consent page url
-  var url = oauth2Client.generateAuthUrl({
-    access_type: 'online', // will return a refresh token
-    scope: 'https://www.googleapis.com/auth/blogger' // can be a space-delimited string or an array of scopes
-  });
+	// generate consent page url
+	var url = oauth2Client.generateAuthUrl({
+		access_type: 'online', // will return a refresh token
+		scope: 'https://www.googleapis.com/auth/blogger' // can be a space-delimited string or an array of scopes
+	});
 
-  console.log('Visit the url: ', url);
-  rl.question('Enter the code here:', function (code) {
-    // request access token
-    oauth2Client.getToken(code, function (err, tokens) {
-      if (err) {
-        return callback(err);
-      }
-      // set tokens to the client
-      // TODO: tokens should be set by OAuth2 client.
-      oauth2Client.setCredentials(tokens);
-      console.log(tokens.access_token);
-      authCode = tokens.access_token;
+	console.log('Visit the url: ', url);
+	rl.question('Enter the code here:', function (code) {
+		// request access token
+		oauth2Client.getToken(code, function (err, tokens) {
+			if (err) {
+				return callback(err);
+			}
+			// set tokens to the client
+			// TODO: tokens should be set by OAuth2 client.
+			oauth2Client.setCredentials(tokens);
+			console.log(tokens.access_token);
+			authCode = tokens.access_token;
 
-      callback();
-    });
-  });
+			callback();
+		});
+	});
 }
 
 // retrieve an access token
 getAccessToken(oauth2Client, function () {
-  // retrieve user profile
-  plus.people.get({ userId: 'me', auth: oauth2Client }, function (err, profile) {
-    if (err) {
-      return console.log('An error occured', err);
-    }
-    console.log(profile.displayName, ':', profile.tagline);
-  });
+	// retrieve user profile
+	plus.people.get({ userId: 'me', auth: oauth2Client }, function (err, profile) {
+		if (err) {
+			return console.log('An error occured', err);
+		}
+		console.log(profile.displayName, ':', profile.tagline);
+	});
 });
 
+
+app.post("/bloggerMessage=:message", function(request, response){
+	var message = request.params.message;
+	var params = {q:message};
+	console.log(message);
+});
 
 
 app.use(cors());
