@@ -18,6 +18,7 @@ var rl = readline.createInterface({
 });
 
 var tokens;
+var authCode;
 
 var oauth2Client = new OAuth2(
   config.ClientID,
@@ -43,7 +44,7 @@ function getAccessToken (oauth2Client, callback) {
       // TODO: tokens should be set by OAuth2 client.
       oauth2Client.setCredentials(tokens);
       console.log(tokens.access_token);
-      
+      authCode = tokens.access_token;
 
       callback();
     });
@@ -71,6 +72,7 @@ app.use(function(request, response, next){
 
 
 });
+
 
 app.use(express.static("./public"));
 app.use('/scripts', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
