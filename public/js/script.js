@@ -2,6 +2,10 @@ var ApiKey,clientIdJSON,clientSecret;
 
 var allKeys = [];
 
+
+  
+
+
 function getAccessToken(){
 	$.ajax({
 		url: "config/config.json",
@@ -60,6 +64,9 @@ function getId(){
 }
 
 
+
+
+
 $("#SendTweet").submit(function(event){
 	event.preventDefault();
 
@@ -79,21 +86,41 @@ $("#SendTweet").submit(function(event){
 
 	}
 
-	$.ajax({
-		url: url,
-		dataType: "json",
-		type: "post",
-		success: function(dataPost){
-			console.log(dataPost);
+	// $.ajax({
+	// 	url: url,
+	// 	dataType: "json",
+	// 	type: "post",
+	// 	success: function(dataPost){
+	// 		console.log(dataPost);
 			
+	// 	},
+	// 	error: function(){
+	// 		console.log("error");
+			
+	// 	}
+
+	// });
+
+	$.ajax({
+		url: "/getURL",
+		dataType: "json",
+		beforeSend: function(xhr){
+			if (xhr.overrideMimeType) {
+				xhr.overrideMimeType("application/json");
+			}
+		},
+		success: function(dataFromTerminal){
+			console.log(dataFromTerminal);
+			// getAccessToken();
+			window.load = dataFromTerminal;
+
+
 		},
 		error: function(){
-			console.log("error");
-			
+			console.log("Not getting url");
 		}
-
 	});
 
 });
 
-getAccessToken();
+
