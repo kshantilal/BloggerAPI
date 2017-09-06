@@ -1,8 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
 }
 a{
     text-decoration: none;
@@ -10,16 +8,22 @@ a{
 }
 .main{
     display: flex;
+    flex-direction: row;
 }
 .nav-bar{
-    height: 100vh;
-    width: 500px;
+    height: auto;
+    width: 25%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    position: fixed;
+    background-color: white;
 }
 .blog{
     background-color: #3FC380;
+    position: absolute;
+    width: 75%;
+    right: 0;
 }
 .logo{
     height:150px;
@@ -85,6 +89,10 @@ a{
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    text-transform: uppercase;
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 4px;
 }
 #SendTweet{
     width: 800px;
@@ -105,6 +113,7 @@ a{
     height: 100%;
     background-color: #1E824C;
     font-family: 'Raleway', sans-serif;
+    width: 50%;
 }
 #authorize-button:hover, #signout-button:hover{
     background-color: grey;
@@ -172,3 +181,8 @@ a{
     width: 90%;
     height: 250px;
 }
+.big-blog-container{
+    display: flex;
+    flex-direction: column;
+}
+    
