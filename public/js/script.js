@@ -102,4 +102,3 @@ $("#SendTweet").submit(function(event){
 });
 
 getAccessToken();
-
