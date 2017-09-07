@@ -64,7 +64,7 @@ function getId(){
 $("#SendTweet").submit(function(event){
 	event.preventDefault();
 	console.log("send form");
-	var content = $("#post-message").val();
+	var content = $("#content").val();
 	var title = $("#title").val();
 	console.log(title);
 	var url = "http://localhost:3000/createPost";
@@ -85,13 +85,12 @@ $("#SendTweet").submit(function(event){
 	$.ajax({
 		url: "http://localhost:3000/createPost",
 		type: "post",
-		data: {title: $("#title").val(), content: $("#post-message").val()},
+		data: {title: $("#title").val(), content: $("#content").val()},
 		dataType: "json",
 		success: function(DataFromBlogger){
 			console.log(DataFromBlogger);
 			// getAccessToken();
 			window.location = DataFromBlogger;
-
 
 		},
 		error: function(error){

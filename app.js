@@ -3,6 +3,7 @@ var config = require('./config');
 var path = require('path');
 var cors = require('cors');
 var readline = require('readline');
+var bodyParser = require('body-parser');
 
 
 var app = express();
@@ -12,6 +13,7 @@ var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var plus = google.plus('v1');
 var blogger = google.blogger('v3');
+
 
 var rl = readline.createInterface({
 	input: process.stdin,
@@ -23,7 +25,8 @@ var rl = readline.createInterface({
 // 	config.ClientSecret,
 // 	"http://localhost:3000/allPosts"
 // );
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(cors());
 
 app.use(function(request, response, next){
@@ -93,8 +96,8 @@ function blogCallback(req, res){
 				auth: oauth2Client,
 				blogId: config.blogID,
 				resource: {
-					title: req.query.title,
-					content: req.query.content
+					title: body['title'],
+					content: body['content']
 				}
 
 			}, function(){
