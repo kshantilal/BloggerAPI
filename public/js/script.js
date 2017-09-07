@@ -38,9 +38,13 @@ function getAccessToken(){
 function getId(){
 	$.ajax({
 		url: "https://www.googleapis.com/blogger/v3/blogs/4002601360602175877/posts?key="+ApiKey, //need a apikey
+		type: "get",
 		dataType:"jsonp",
 		success:function(DataFromBlogger){
-			console.log(DataFromBlogger.items[0].content);
+			// console.log(DataFromBlogger.items[0].content);
+			
+			console.log(DataFromBlogger.items);
+
 
 
 			for (var i = 0; i < DataFromBlogger.items.length; i++) {
@@ -61,62 +65,49 @@ function getId(){
 
 
 
-
-
 $("#SendTweet").submit(function(event){
 	event.preventDefault();
+	console.log("send form");
+	var content = $("#post-message").val();
+	var title = $("#title").val();
+	console.log(title);
+	var url = "http://localhost:3000/createPost";
+	console.log(content);
 
-	var message = $("#post-message").val();
-	var url = "http://localhost:3000";
-	console.log(message);
+	if (title.length == 0) {
+		alert("Please insert a title for your blog");
+	}
 
-	if (message.length == 0) {
+	if (content.length == 0) {
 		alert("Please fill out your message");
 		return;
-	}else if(message.length > 200){
+	}if(content.length > 200){
 		alert("Must be less than 200 characters");
 		return;
 
-	}else{
-		url += "/bloggerMessage=" + message;
-
 	}
-
-	// $.ajax({
-	// 	url: url,
-	// 	dataType: "json",
-	// 	type: "post",
-	// 	success: function(dataPost){
-	// 		console.log(dataPost);
-			
-	// 	},
-	// 	error: function(){
-	// 		console.log("error");
-			
-	// 	}
-
-	// });
-
 	$.ajax({
-		url: "/getURL",
+		url: "http://localhost:3000/createPost",
+		type: "post",
+		data: {title: $("#title").val(), content: $("#post-message").val()},
 		dataType: "json",
-		beforeSend: function(xhr){
-			if (xhr.overrideMimeType) {
-				xhr.overrideMimeType("application/json");
-			}
-		},
-		success: function(dataFromTerminal){
-			console.log(dataFromTerminal);
+		success: function(DataFromBlogger){
+			console.log(DataFromBlogger);
 			// getAccessToken();
-			window.load = dataFromTerminal;
+			window.location = DataFromBlogger;
 
 
 		},
-		error: function(){
-			console.log("Not getting url");
+		error: function(error){
+			console.log(error);
 		}
 	});
 
+
+	
+
+
 });
 
+getAccessToken();
 

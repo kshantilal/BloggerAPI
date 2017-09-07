@@ -35,21 +35,25 @@
 	</div>
 	<div class="blog">
 		<div class="post-container">
-			<h2 class="post_title">Write a Post</h2 class="post_title">
 			<form id="SendTweet" method="post" action="/">
-				<div class="post_form">
-					<textarea id="post-message" class="form-control" placeholder="Write your post..."></textarea>
+				<div class="title">
+					<label class="post_title">Your title</label>
+					<input type="text" id="title" placeholder="Your blog title...">
 				</div>
+				<div class="title">
+					<label class="post_title">Write a Post</label>
+					<textarea id="post-message" placeholder="Write your post..."></textarea>
+				</div>
+				
 				<div class="all-btn-post">
 					<button type="submit" class="btn-post">Post</button>
-					<span id="result">Helloooo</span>
+					<span id="result"></span>
 				</div>
+				
 			</form>
 		</div>
 
-		<div class="big-blog-container" id="BlogContainer">
-
-		</div>
+		<div class="big-blog-container" id="BlogContainer"></div>
 		
 	</div>
 
