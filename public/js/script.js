@@ -3,15 +3,12 @@ var ApiKey,clientIdJSON,clientSecret;
 var allKeys = [];
 
 
-  
-
-
 function getAccessToken(){
 	$.ajax({
 		url: "config/config.json",
 		dataType: "json",
 		success: function(DataFromJSON){
-			console.log(DataFromJSON);
+			// console.log(DataFromJSON);
 
 			allKeys.push({
 				apiKey: DataFromJSON.apiKey,
@@ -43,7 +40,7 @@ function getId(){
 		success:function(DataFromBlogger){
 			// console.log(DataFromBlogger.items[0].content);
 			
-			console.log(DataFromBlogger.items);
+			console.log(DataFromBlogger.items[0].content);
 
 
 
@@ -62,7 +59,6 @@ function getId(){
 	});
 
 }
-
 
 
 $("#SendTweet").submit(function(event){
@@ -102,9 +98,6 @@ $("#SendTweet").submit(function(event){
 			console.log(error);
 		}
 	});
-
-
-	
 
 
 });

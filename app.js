@@ -7,7 +7,7 @@ var readline = require('readline');
 
 var app = express();
 
-
+var tokens;
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var plus = google.plus('v1');
@@ -17,8 +17,6 @@ var rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout
 });
-
-var authCode;
 
 // var oauth2Client = new OAuth2(
 // 	config.ClientID,
@@ -56,8 +54,6 @@ function blogPost(req, res, next){
 
 // });
 
-
-
 app.post("/bloggerMessage=:message", function(request, response){
 	var message = request.params.message;
 	var params = {q:message};
@@ -85,7 +81,6 @@ function getAuthUrl() {
 // 	});
 // 	return url;
 // }
-var tokens;
 // retrieve an access token
 function blogCallback(req, res){
 	var oauth2Client = getOAuthClient();
@@ -96,7 +91,7 @@ function blogCallback(req, res){
 			oauth2Client.setCredentials(tokens);
 			blogger.posts.insert({
 				auth: oauth2Client,
-				blogId: '4002601360602175877',
+				blogId: config.blogID,
 				resource: {
 					title: req.query.title,
 					content: req.query.content
@@ -122,8 +117,6 @@ function blogCallback(req, res){
 	// });
 
 }
-
-
 
 
 app.use(express.static("./public"));
